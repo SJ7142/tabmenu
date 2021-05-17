@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: rgb(234, 242, 248);
+      }
+      ul,
+      li,
+      a {
+        text-decoration: none;
+        list-style: none;
+        color: inherit;
+      }
+      .tab-memu {
+        width: 600px;
+        background: #f3c6b3;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 5px;
+      }
+
+      .tab-btn ul {
+        display: flex;
+      }
+
+      .tab-btn li {
+        flex-basis: 20%;
+        text-align: center;
+        list-style: none;
+      }
+
+      .tab-btn li a {
+        text-decoration: none;
+        color: #fff;
+        padding: 20px 20px 15px 20px;
+        display: block;
+      }
+
+      .tab-btn li.active a {
+        border-bottom: 3px solid #8d6e63;
+        color: #8d6e63;
+      }
+
+      .tab-cont {
+        background: #fff;
+        padding: 20px;
+        border-radius: 0 0 5px 5px;
+        font-size: 18px;
+        line-height: 1.2;
+        color: #000;
+        height: 200px;
+      }
+
+      .tab-cont > div {
+        display: none;
+      }
+
+      .tab-cont > div:nth-child(1) {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="content">
+      <div class="tab-memu">
+        <div class="tab-btn">
+          <ul>
+            <li class="active"><a href="#">Tab1</a></li>
+            <li><a href="#">Tab2</a></li>
+            <li><a href="#">Tab3</a></li>
+            <li><a href="#">Tab4</a></li>
+            <li><a href="#">Tab5</a></li>
+          </ul>
+        </div>
+        <div class="tab-cont">
+          <div>
+            탭 방식으로 화면을 전환하는 인터페이스를 말합니다.<br /><br />제한된
+            웹페이지 공간에 보여줄 일부 콘텐츠를 레이어로 구분하여 숨기길 수
+            있기 때문입니다. <br /><br />숨겨진 영역만큼 확보된 영역에 원하는
+            콘텐츠를 선택해 보여줄 수 있게되므로 많은 콘텐츠를 보여줘야 하는
+            경우 많이 쓰입니다.
+          </div>
+          <div>샘플 화면 2</div>
+          <div>샘플 화면 3</div>
+          <div>샘플 화면 4</div>
+          <div>샘플 화면 5</div>
+        </div>
+      </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      let tabBtn = $('.tab-btn > ul > li')
+      let tabCont = $('.tab-cont > div')
+
+      tabBtn.click(function () {
+        let target = $(this)
+        let index = target.index()
+        tabBtn.removeClass('active')
+        target.addClass('active')
+        tabCont.hide()
+        tabCont.eq(index).show()
+      })
+    </script>
+  </body>
+</html>
